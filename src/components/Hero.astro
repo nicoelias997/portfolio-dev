@@ -1,0 +1,87 @@
+---
+const personalImageAlt = "Nicolás Elias"
+import Badge from "../components/Badge.astro"
+import LinkedInIcon from '../components/icons/LinkedIn.astro'
+import MailIcon from '../components/icons/Mail.astro'
+import SocialPill from '../components/SocialPill.astro'
+---
+
+<div class="max-w-xl">
+  <div class="flex gap-4 mb-4">
+    <img
+      class="rounded-full shadow-lg size-16"
+      src="https://pbs.twimg.com/profile_images/1417505894024286210/nkZmLw74_400x400.jpg"
+      alt={personalImageAlt}
+    />
+    <a
+      href="https://linkedin.com/in/midudev"
+      target="_blank"
+      rel="noopener"
+      class="flex items-center transition md:justify-center md:hover:scale-105"
+    >
+      <Badge>Disponible para trabajar</Badge>
+    </a>
+  </div>
+  <h1
+    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+  >
+    Hey, soy Nico
+  </h1>
+  <p
+    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+  >
+    +2 años de experiencia. <strong
+      >Desarrollador web y Administrador de Sistemas.</strong
+    > De Argentina, en Valencia, España. Capacitado para crear aplicaciones, mantener servidores, copias de seguridad y maquinas virtuales.
+  </p>
+  <nav class="flex flex-wrap gap-4 mt-8">
+    <SocialPill href="mailto:nicoelias997@gmail.com">
+      <MailIcon class="size-4" />
+      Contáctame
+    </SocialPill>
+    <SocialPill href="https://www.linkedin.com/in/nicolas-elias-8a970a245/">
+      <LinkedInIcon class="size-4" />
+      LinkedIn
+    </SocialPill>
+  </nav>
+</div>
+<!-- <main class="px-4">
+  <SectionContainer id="top" class="py-44 pb-32">
+    <img 
+      class="rounded-full size-12 mb-4" 
+      src="https://pbs.twimg.com/profile_images/1417505894024286210/nkZmLw74_400x400.jpg" 
+      alt="Foto de perfil"
+    >
+  <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
+    Hey, soy Nico
+    <a 
+      href="https://www.linkedin.com/in/nicolas-elias-8a970a245/"
+      target="_blank"
+      rel="noopener"
+      aria-label="Link to my LinkedIn profile"
+      class="flex justify-center items-center"
+    >
+      <Badge>Disponible para trabajar</Badge>
+    </a>
+  </h1>
+  <h2 class="text-xl lg:text-3xl text-wrap max-w-[700px]">
+    <span>+2 años de experiencia.</span>
+    <span class="text-yellow-200/90">Desarrollador web y Administrador de Sistemas. </span>
+    <span class="text-red-200/90"> De Argentina, en Valencia, España.</span> 
+    <span class="opacity-75">Capacitado para crear aplicaciones, mantener servidores, copias de seguridad y maquinas virtuales.</span>
+  </h2>
+  <nav class="flex gap-4 mt-8 flex-wrap">
+    <SocialPill href="https://www.linkedin.com/in/nicolas-elias-8a970a245/">
+      <LinkedInIcon class="size-4 md:size-6"></LinkedInIcon>
+      LinkedIn
+    </SocialPill>
+    <SocialPill href="https://github.com/nicoelias997">
+      <GitHubIcon class="size-4 md:size-6"></GitHubIcon>
+      GitHub
+    </SocialPill>
+    <SocialPill href="mailto:nicoelias997@gmail.com">
+      <MailIcon class="size-4 md:size-6"></MailIcon>
+      nicoelias997@gmail.com
+    </SocialPill>
+  </nav>
+</SectionContainer> -->
