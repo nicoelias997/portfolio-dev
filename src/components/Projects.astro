@@ -3,6 +3,17 @@ import InertiaIcon from '../components/icons/Inertia.astro'
 import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro"
 import GitHub from "./icons/GitHub.astro"
+import PhpIcon from "./icons/Php.astro"
+import LaravelIcon from "./icons/Laravel.astro"
+import AngularIcon from "./icons/Angular.astro"
+import TypeScriptIcon from "./icons/TypeScript.astro"
+import ReactIcon from "./icons/React.astro"
+import JSIcon from "./icons/Javascript.astro"
+import AstroIcon from "./icons/Astro.astro"
+import MongoDBIcon from "./icons/MongoDB.astro"
+import MySQLIcon from "./icons/MySQL.astro"
+
+
 
 const TAGS = {
   INERTIA: {
@@ -10,28 +21,85 @@ const TAGS = {
     class: 'bg-[#9454E9] text-white',
     icon: InertiaIcon
   },
-  INERTIA2: {
-    name: 'Inertia.js',
-    class: 'bg-[#9454E9] text-white',
-    icon: InertiaIcon
-  }
+  PHP: {
+    name: 'PHP',
+    class: 'bg-[#4D588E] text-white',
+    icon: PhpIcon
+  },
+  LARAVEL: {
+    name: 'Laravel',
+    class: 'bg-[#F6362D] text-white',
+    icon: LaravelIcon
+  },
+  ANGULAR: {
+    name: 'Angular',
+    class: 'bg-[#C3002F] text-white',
+    icon: AngularIcon
+  },
+  TYPESCRIPT: {
+    name: 'TypeScript',
+    class: 'bg-[#1567C2] text-white',
+    icon: TypeScriptIcon
+  },
+  ASTRO: {
+    name: 'Astro',
+    class: 'bg-[#181426] text-white',
+    icon: AstroIcon
+  },
+  REACT: {
+    name: 'React.js',
+    class: 'bg-[#0D6D8C] text-white',
+    icon: ReactIcon
+  },
+  JAVASCRIPT: {
+    name: 'Javascript',
+    class: 'bg-[#EFD81D] text-white',
+    icon: JSIcon
+  },
+  MONGODB: {
+    name: 'Mongo DB',
+    class: 'bg-[#006548] text-white',
+    icon: MongoDBIcon
+  },
+  MYSQL: {
+    name: 'MySQL',
+    class: 'bg-[#F29111] text-white',
+    icon: MySQLIcon
+  },
+  
 }
 const PROJECTS = [
   {
-    title: 'Project 1',
-    description: 'lorem ipsum adsjashajaaaaaaaaaaaaaaaaaaaaaaaa',
-    link: '#',
-    github: '#',
-    image: 'https://via.placeholder.com/300x200',
-    tags: [TAGS.INERTIA, TAGS.INERTIA2]
+    title: 'Content Management System',
+    description: 'Es una plataforma de software diseñada para gestionar y colaborar en la revisión, aceptación o rechazo de documentación, así como para el envío de notas y comentarios entre administradores y otros usuarios del sistema.',
+    link: 'https://cms.lemecsl.com/',
+    image: '/projects/Captura-Spa.PNG',
+    github: '',
+    tags: [TAGS.INERTIA, TAGS.PHP, TAGS.LARAVEL, TAGS.MYSQL]
   },
   {
-    title: 'Project 2',
-    description: 'lorem ipsum adsjashajaaaaaaaaaaaaaaaaaaaaaaaaaa',
-    link: '#',
-    github: '#',
-    image: 'https://via.placeholder.com/300x200',
-    tags: [TAGS.INERTIA, TAGS.INERTIA2]
+    title: 'Portfolio',
+    description: 'Este es mi portfolio, describe un poco lo que hago, donde y como trabajo. ',
+    link: 'https://chipper-puffpuff-ffcd43.netlify.app/',
+    image: '/projects/Portfolio.PNG',
+    github: 'https://github.com/nicoelias997/portfolio-dev',
+    tags: [TAGS.ASTRO]
+  },
+  {
+    title: 'Banner MyVirtualCard',
+    description: 'Funcionalidad del banner dinamico de la Virtual Card, gestiona la instalación de la misma.',
+    link: 'https://pruebas.myvirtualcard.es',
+    image: '/projects/banner.PNG',
+    github: '',
+    tags: [TAGS.ANGULAR, TAGS.TYPESCRIPT]
+  },
+  {
+    title: 'Hamburgueseria Leno',
+    description: 'Proyecto final de capacitación, debiamos realizar un trabajo en equipo de un E-Commerce. Me toco realizar el Front-End y Back-End del login.',
+    link: 'https://lenohamburguesas.netlify.app/login',
+    image: '/projects/leno.PNG',
+    github: '',
+    tags: [TAGS.REACT, TAGS.JAVASCRIPT, TAGS.MONGODB]
   }
 ]
 
