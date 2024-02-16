@@ -12,7 +12,7 @@ import JSIcon from "./icons/Javascript.astro"
 import AstroIcon from "./icons/Astro2.astro"
 import MongoDBIcon from "./icons/MongoDB.astro"
 import MySQLIcon from "./icons/MySQL.astro"
-
+import TailwindIcon from "./icons/Tailwind.astro"
 
 
 const TAGS = {
@@ -66,7 +66,11 @@ const TAGS = {
     class: 'bg-[#F29111] text-white',
     icon: MySQLIcon
   },
-  
+  TAILWIND: {
+    name: 'Tailwind CSS',
+    class: 'bg-[#38BDF8] tex-white',
+    icon: TailwindIcon
+  }
 }
 const PROJECTS = [
   {
@@ -83,7 +87,7 @@ const PROJECTS = [
     link: 'https://chipper-puffpuff-ffcd43.netlify.app/',
     image: '/projects/Portfolio.jpg',
     github: 'https://github.com/nicoelias997/portfolio-dev',
-    tags: [TAGS.ASTRO]
+    tags: [TAGS.ASTRO, TAGS.TAILWIND]
   },
   {
     title: 'Banner MyVirtualCard',
