@@ -21,6 +21,18 @@ import { ViewTransitions } from "astro:transitions"
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4YJFM6RKX"></script>
+    <script>
+      // @ts-ignore
+      window.dataLayer = window.dataLayer || [];
+      // @ts-ignore
+      function gtag(){dataLayer.push(arguments);}
+      // @ts-ignore
+      gtag('js', new Date());
+      // @ts-ignore
+      gtag('config', 'G-G4YJFM6RKX');
+    </script>
     <ViewTransitions />
 	</head>
   <body class="relative text-black dark:text-white">
