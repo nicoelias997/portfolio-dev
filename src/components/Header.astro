@@ -37,6 +37,7 @@ const navItems = [
           class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
           aria-label={link.label}
           href={link.url}
+          id={link.label}
         >
           {link.title}
         </a>
@@ -64,6 +65,19 @@ const navItems = [
         }
       })
     }
+    // @ts-ignore
+    window.dataLayer = window.dataLayer || [];
+    // @ts-ignore
+    function gtag(){dataLayer.push(arguments);}
+    
+    document.getElementById('experiencia').addEventListener('click', function() {
+    // @ts-ignore
+      gtag('event', 'click', {
+        'event_category': 'QR',
+        'event_label': 'QR Code Click',
+        'value': 1
+      });
+  });
 
     const observer = new IntersectionObserver(callback, {
       root: null,
