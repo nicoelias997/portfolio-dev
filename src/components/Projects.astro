@@ -13,7 +13,8 @@ import AstroIcon from "./icons/Astro2.astro"
 import MongoDBIcon from "./icons/MongoDB.astro"
 import MySQLIcon from "./icons/MySQL.astro"
 import TailwindIcon from "./icons/Tailwind.astro"
-
+import SocketIo from "./icons/SocketIo.astro"
+import JanusWebRTC from "./icons/WebRTC.astro"
 
 const TAGS = {
   INERTIA: {
@@ -70,9 +71,27 @@ const TAGS = {
     name: 'Tailwind CSS',
     class: 'bg-[#38BDF8] tex-white',
     icon: TailwindIcon
+  },
+  SOCKETIO: {
+    name: 'Socket.IO',
+    class: 'bg-[#010101] tex-white',
+    icon: SocketIo
+  },
+  WEBRTC: {
+    name: 'WebRTC',
+    class: 'bg-[#38BDF8] tex-white',
+    icon: JanusWebRTC
   }
 }
 const PROJECTS = [
+    {
+    title: 'Meet Strangers',
+    description: 'Aplicación de videollamadas desarrollada con JavaScript puro y WebRTC, que permite establecer conexión entre dos usuarios mediante un código personal o de forma aleatoria, similar a plataformas como Omegle. El proyecto demuestra cómo implementar comunicación en tiempo real desde cero.',
+    link: 'https://janus-meet.onrender.com',
+    image: '/projects/meet.PNG',
+    github: 'https://github.com/nicoelias997/janus-meet',
+    tags: [TAGS.JAVASCRIPT, TAGS.SOCKETIO, TAGS.WEBRTC, TAGS.MONGODB]
+  },
   {
     title: 'Content Management System',
     description: 'Es una plataforma de software diseñada para gestionar y colaborar en la revisión, aceptación o rechazo de documentación, así como para el envío de notas y comentarios entre administradores y otros usuarios del sistema.',
