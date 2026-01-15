@@ -1,0 +1,517 @@
+<!-- Modal backdrop -->
+<div
+  id="project-modal-backdrop"
+  class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"
+  aria-hidden="true"
+></div>
+
+<!-- Modal container -->
+<div
+  id="project-modal"
+  class="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-6 md:p-8 max-h-[90vh] overflow-y-auto z-50 hidden opacity-0"
+  style="transform: scale(0.95);"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+>
+  <!-- Close button -->
+  <button
+    id="modal-close-btn"
+    class="absolute top-4 right-4 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500 z-10"
+    aria-label="Cerrar modal"
+  >
+    <svg class="size-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- Modal content (populated by JS) -->
+  <div id="modal-content">
+    <h2 id="modal-title" class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100"></h2>
+
+    <!-- Tech tags -->
+    <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+
+    <!-- Tabs navigation -->
+    <div class="flex border-b border-gray-200 dark:border-gray-700 mb-6">
+      <button
+        id="tab-info"
+        class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 dark:hover:text-blue-400 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500"
+        data-tab="info"
+        aria-selected="true"
+        data-i18n="modal.info"
+      >
+        Información
+      </button>
+      <button
+        id="tab-test"
+        class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 dark:hover:text-blue-400 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500"
+        data-tab="test"
+        aria-selected="false"
+        data-i18n="modal.test"
+      >
+        Cómo probar
+      </button>
+    </div>
+
+    <!-- Tab: Information -->
+    <div id="panel-info" class="tab-panel">
+      <!-- Description -->
+      <p id="modal-description" class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed"></p>
+
+      <!-- Features list -->
+      <div id="modal-features" class="mb-8">
+        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100" data-i18n="modal.features">Características principales:</h3>
+        <ul id="modal-features-list" class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300"></ul>
+      </div>
+
+      <!-- Links -->
+      <div id="modal-links" class="flex flex-wrap gap-4"></div>
+    </div>
+
+    <!-- Tab: Testing Info -->
+    <div id="panel-test" class="tab-panel hidden">
+      <!-- Instructions -->
+      <div id="modal-instructions" class="mb-6">
+        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100 flex items-center gap-2">
+          <svg class="size-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span data-i18n="modal.instructions">Instrucciones</span>
+        </h3>
+        <p id="modal-instructions-text" class="text-gray-700 dark:text-gray-300 leading-relaxed bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800"></p>
+      </div>
+
+      <!-- Credentials table -->
+      <div id="modal-credentials" class="mb-6">
+        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100 flex items-center gap-2">
+          <svg class="size-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+          </svg>
+          <span data-i18n="modal.credentials">Credenciales de prueba</span>
+        </h3>
+        <div id="modal-credentials-table" class="overflow-x-auto">
+          <!-- Table will be populated by JS -->
+        </div>
+      </div>
+
+      <!-- No credentials message -->
+      <div id="modal-no-credentials" class="hidden text-gray-500 dark:text-gray-400 text-center py-8">
+        <svg class="size-12 mx-auto mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        <p data-i18n="modal.noCredentials">Este proyecto no requiere credenciales. Sigue las instrucciones para probarlo.</p>
+      </div>
+
+      <!-- Demo link in test tab -->
+      <div id="modal-test-links" class="flex flex-wrap gap-4 mt-6"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Smooth modal animations */
+  #project-modal-backdrop.open {
+    opacity: 1;
+  }
+
+  #project-modal.open {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    #project-modal.open {
+      transform: scale(1) !important;
+    }
+  }
+
+  /* Tab styling */
+  .tab-btn.active {
+    color: rgb(37 99 235);
+    border-bottom-color: rgb(37 99 235);
+  }
+
+  .dark .tab-btn.active {
+    color: rgb(96 165 250);
+    border-bottom-color: rgb(96 165 250);
+  }
+
+  /* Custom scrollbar for modal content */
+  #project-modal::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  #project-modal::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #project-modal::-webkit-scrollbar-thumb {
+    background: rgb(156 163 175 / 0.5);
+    border-radius: 4px;
+  }
+
+  #project-modal::-webkit-scrollbar-thumb:hover {
+    background: rgb(156 163 175 / 0.7);
+  }
+</style>
+
+<script is:inline>
+  // Store reference to PROJECTS array (will be set by Projects.astro)
+  let PROJECTS_DATA = []
+
+  // DOM elements
+  const backdrop = document.getElementById('project-modal-backdrop')
+  const modal = document.getElementById('project-modal')
+  const closeBtn = document.getElementById('modal-close-btn')
+  const tabBtns = document.querySelectorAll('.tab-btn')
+  const tabPanels = document.querySelectorAll('.tab-panel')
+
+  // Store last focused element for accessibility
+  let lastFocusedElement = null
+
+  // Guard flag to prevent multiple modals
+  let isModalOpen = false
+
+  // Current project reference
+  let currentProject = null
+
+  function switchTab(tabName) {
+    // Update tab buttons
+    tabBtns.forEach(btn => {
+      if (btn.dataset.tab === tabName) {
+        btn.classList.add('active')
+        btn.setAttribute('aria-selected', 'true')
+      } else {
+        btn.classList.remove('active')
+        btn.setAttribute('aria-selected', 'false')
+      }
+    })
+
+    // Update panels
+    document.getElementById('panel-info').classList.toggle('hidden', tabName !== 'info')
+    document.getElementById('panel-test').classList.toggle('hidden', tabName !== 'test')
+  }
+
+  function openModal(projectIndex) {
+    if (isModalOpen) return
+
+    const project = PROJECTS_DATA[projectIndex]
+    if (!project) return
+
+    isModalOpen = true
+    currentProject = project
+
+    // Store last focused element
+    lastFocusedElement = document.activeElement
+
+    // Populate modal content
+    populateModal(project)
+
+    // Reset to first tab
+    switchTab('info')
+
+    // Show modal
+    backdrop.classList.remove('hidden')
+    modal.classList.remove('hidden')
+
+    // Trigger animation after display
+    requestAnimationFrame(() => {
+      backdrop.classList.add('open')
+      modal.classList.add('open')
+    })
+
+    // Lock body scroll
+    document.body.style.overflow = 'hidden'
+
+    // Focus close button
+    setTimeout(() => {
+      closeBtn.focus()
+    }, 100)
+
+    // Setup focus trap
+    setupFocusTrap()
+  }
+
+  function closeModal() {
+    if (!isModalOpen) return
+
+    // Remove animation classes
+    backdrop.classList.remove('open')
+    modal.classList.remove('open')
+
+    // Hide after animation completes
+    setTimeout(() => {
+      backdrop.classList.add('hidden')
+      modal.classList.add('hidden')
+      isModalOpen = false
+      currentProject = null
+    }, 300)
+
+    // Restore body scroll
+    document.body.style.overflow = ''
+
+    // Restore focus to triggering element
+    if (lastFocusedElement) {
+      lastFocusedElement.focus()
+    }
+  }
+
+  // Helper to get translation
+  function t(key, fallback) {
+    const lang = window.getCurrentLang ? window.getCurrentLang() : 'es'
+    const translations = window.translations || {}
+    return (translations[lang] && translations[lang][key]) || fallback
+  }
+
+  function populateModal(project) {
+    const i18nKey = project.i18nKey
+
+    // Title - use translation if available
+    const titleKey = `project.${i18nKey}.title`
+    document.getElementById('modal-title').textContent = t(titleKey, project.title)
+
+    // Tags
+    const tagsContainer = document.getElementById('modal-tags')
+    tagsContainer.innerHTML = project.tags.map(tag => `
+      <span class="flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2">
+        ${tag.name}
+      </span>
+    `).join('')
+
+    // Description - use translation if available
+    const descKey = `project.${i18nKey}.description`
+    document.getElementById('modal-description').textContent = t(descKey, project.description)
+
+    // Features - use translations if available
+    const featuresList = document.getElementById('modal-features-list')
+    if (project.features && project.features.length > 0) {
+      featuresList.innerHTML = project.features.map((feature, idx) => {
+        const featureKey = `feature.${i18nKey}.${idx + 1}`
+        return `<li>${t(featureKey, feature)}</li>`
+      }).join('')
+      document.getElementById('modal-features').style.display = 'block'
+    } else {
+      document.getElementById('modal-features').style.display = 'none'
+    }
+
+    // Links (Info tab)
+    const linksContainer = document.getElementById('modal-links')
+    linksContainer.innerHTML = buildLinksHTML(project)
+
+    // Test info tab
+    populateTestInfo(project)
+  }
+
+  function buildLinksHTML(project) {
+    const links = []
+
+    if (project.github) {
+      links.push(`
+        <a
+          href="${project.github}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500"
+        >
+          <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+          </svg>
+          GitHub
+        </a>
+      `)
+    }
+
+    if (project.link) {
+      links.push(`
+        <a
+          href="${project.link}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500"
+        >
+          <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+          ${t('modal.viewDemo', 'Ver Demo')}
+        </a>
+      `)
+    }
+
+    return links.join('')
+  }
+
+  function populateTestInfo(project) {
+    const testInfo = project.testInfo
+    const i18nKey = project.i18nKey
+
+    // Instructions - use translation if available
+    const instructionsText = document.getElementById('modal-instructions-text')
+    if (testInfo && testInfo.instructions) {
+      const instructionsKey = `project.${i18nKey}.instructions`
+      instructionsText.textContent = t(instructionsKey, testInfo.instructions)
+      document.getElementById('modal-instructions').style.display = 'block'
+    } else {
+      document.getElementById('modal-instructions').style.display = 'none'
+    }
+
+    // Credentials
+    const credentialsContainer = document.getElementById('modal-credentials')
+    const credentialsTable = document.getElementById('modal-credentials-table')
+    const noCredentialsMsg = document.getElementById('modal-no-credentials')
+
+    if (testInfo && testInfo.credentials && testInfo.credentials.length > 0) {
+      credentialsContainer.style.display = 'block'
+      noCredentialsMsg.classList.add('hidden')
+
+      credentialsTable.innerHTML = `
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <th class="text-left py-2 px-3 font-semibold text-gray-900 dark:text-gray-100">${t('modal.role', 'Rol')}</th>
+              <th class="text-left py-2 px-3 font-semibold text-gray-900 dark:text-gray-100">${t('modal.email', 'Email')}</th>
+              <th class="text-left py-2 px-3 font-semibold text-gray-900 dark:text-gray-100">${t('modal.password', 'Contraseña')}</th>
+              <th class="py-2 px-3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${testInfo.credentials.map(cred => `
+              <tr class="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                <td class="py-3 px-3">
+                  <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300">
+                    ${cred.roleKey ? t(cred.roleKey, cred.role) : cred.role}
+                  </span>
+                </td>
+                <td class="py-3 px-3 font-mono text-gray-700 dark:text-gray-300">${cred.email}</td>
+                <td class="py-3 px-3 font-mono text-gray-700 dark:text-gray-300">${cred.password}</td>
+                <td class="py-3 px-3">
+                  <button
+                    onclick="copyCredentials('${cred.email}', '${cred.password}')"
+                    class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-xs flex items-center gap-1 copy-btn"
+                    title="${t('modal.copy', 'Copiar')}"
+                  >
+                    <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    ${t('modal.copy', 'Copiar')}
+                  </button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `
+    } else {
+      credentialsContainer.style.display = 'none'
+      noCredentialsMsg.classList.remove('hidden')
+    }
+
+    // Demo link in test tab
+    const testLinksContainer = document.getElementById('modal-test-links')
+    if (project.link) {
+      testLinksContainer.innerHTML = `
+        <a
+          href="${project.link}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500 font-medium"
+        >
+          <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          ${t('modal.tryNow', 'Probar ahora')}
+        </a>
+      `
+    } else {
+      testLinksContainer.innerHTML = ''
+    }
+  }
+
+  // Copy credentials helper
+  window.copyCredentials = function(email, password) {
+    const lang = window.getCurrentLang ? window.getCurrentLang() : 'es'
+    const passwordLabel = lang === 'en' ? 'Password' : 'Contraseña'
+    const text = `Email: ${email}\n${passwordLabel}: ${password}`
+    navigator.clipboard.writeText(text).then(() => {
+      // Show brief feedback
+      const btn = event.target.closest('button')
+      const originalHTML = btn.innerHTML
+      btn.innerHTML = `
+        <svg class="size-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        ${t('modal.copied', 'Copiado')}
+      `
+      setTimeout(() => {
+        btn.innerHTML = originalHTML
+      }, 1500)
+    })
+  }
+
+  function setupFocusTrap() {
+    const focusableElements = modal.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    )
+
+    if (focusableElements.length === 0) return
+
+    const firstFocusable = focusableElements[0]
+    const lastFocusable = focusableElements[focusableElements.length - 1]
+
+    function handleTabKey(e) {
+      if (e.key !== 'Tab') return
+
+      if (e.shiftKey && document.activeElement === firstFocusable) {
+        e.preventDefault()
+        lastFocusable.focus()
+      } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+        e.preventDefault()
+        firstFocusable.focus()
+      }
+    }
+
+    // Remove any existing listener
+    modal.removeEventListener('keydown', handleTabKey)
+    modal.addEventListener('keydown', handleTabKey)
+  }
+
+  // Tab click handlers
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      switchTab(btn.dataset.tab)
+    })
+  })
+
+  // Event listeners
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal)
+  }
+
+  // Close on backdrop click
+  if (backdrop) {
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) {
+        closeModal()
+      }
+    })
+  }
+
+  // Close on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isModalOpen) {
+      closeModal()
+    }
+  })
+
+  // Listen for custom event from project cards
+  document.addEventListener('open-project-modal', (e) => {
+    openModal(e.detail.projectIndex)
+  })
+
+  // Export function to set projects data
+  window.setProjectsData = (data) => {
+    PROJECTS_DATA = data
+  }
+</script>

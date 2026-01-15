@@ -25,3 +25,6 @@ credentials.json
 
 # Package
 .package-lock.json
+
+.claude
+*.md

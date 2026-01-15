@@ -1,26 +1,31 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
+import LanguageToggle from "./LanguageToggle.astro"
 
 const navItems = [
   {
     title: "Experiencia",
     label: "experiencia",
     url: "/#experience",
+    i18nKey: "nav.experience",
   },
   {
     title: "Proyectos",
     label: "proyectos",
     url: "/#project",
+    i18nKey: "nav.projects",
   },
   {
     title: "Sobre mí",
     label: "sobre-mi",
     url: "/#about",
+    i18nKey: "nav.about",
   },
   {
     title: "Contacto",
     label: "contacto",
     url: "mailto:nicoelias997@gmail.com",
+    i18nKey: "nav.contact",
   },
 ]
 ---
@@ -38,11 +43,13 @@ const navItems = [
           aria-label={link.label}
           href={link.url}
           id={link.label}
+          data-i18n={link.i18nKey}
         >
           {link.title}
         </a>
       ))
     }
+    <LanguageToggle />
     <ThemeToggle />
   </nav>
 </header>

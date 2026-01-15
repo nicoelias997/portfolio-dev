@@ -8,36 +8,33 @@ import SocialPill from '../components/SocialPill.astro'
 
 <div class="max-w-xl">
   <div class="flex gap-4 mb-4">
-    <img
-      class="rounded-full shadow-lg size-16"
-      src="https://pbs.twimg.com/media/GKUAKPBWEAEJ8CU?format=jpg&name=4096x4096"
-      alt={personalImageAlt}
-    />
     <a
       href="https://www.linkedin.com/in/nicolas-elias-8a970a245/"
       target="_blank"
       rel="noopener"
       class="flex items-center transition md:justify-center md:hover:scale-105"
     >
-      <Badge>Disponible para trabajar</Badge>
+      <Badge><span data-i18n="hero.badge">Disponible para trabajar</span></Badge>
     </a>
   </div>
   <h1
     class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+    data-i18n="hero.greeting"
   >
     Hey, soy Nico
   </h1>
   <p
     class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+    data-i18n="hero.description"
   >
-    +2 años de experiencia. 
-    <strong>Desarrollador web y Administrador de Servidores.</strong> 
-    De Argentina, en Valencia, España. Capacitado para crear aplicaciones, instalar y mantener servidores y gestionar copias de seguridad en la nube.
+    +4 años de experiencia.
+    <strong>Desarrollador Full Stack e Ingeniero de Infraestructura.</strong>
+    Argentino residiendo en Valencia, España. Especializado en desarrollo de aplicaciones web a medida, administración de servidores, virtualización (VMware, vCenter), configuración de redes, ensamblaje de equipos, RAID arrays, pfSense, copias de seguridad y réplicas en la nube.
   </p>
   <nav class="flex flex-wrap gap-4 mt-8">
     <SocialPill href="mailto:nicoelias997@gmail.com">
       <MailIcon class="size-4" />
-      Contáctame
+      <span data-i18n="hero.contact">Contáctame</span>
     </SocialPill>
     <SocialPill href="https://www.linkedin.com/in/nicolas-elias-8a970a245/">
       <LinkedInIcon class="size-4" />

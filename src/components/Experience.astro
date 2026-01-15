@@ -1,29 +1,31 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro"
-const EXPERIENCIE = [
+const EXPERIENCE = [
   {
-    date: "Actualmente...",
-    title: "Desarrollador FullStack y Administrador de Servidores",
+    i18nKey: "exp1",
+    date: "Marzo 2023 - Presente",
+    title: "Full Stack Developer & Infrastructure Engineer",
     company: "Comunicaciones Man Levante SL - España",
     description:
-      "Desde marzo del 2023, estoy encargado del desarrollo de nuevas funcionalidades en una aplicación que integra un sistema MES con un ERP. Desarrollo y mantenimiento de aplicaciones propias, configuración y aseguramiento de servidores, despliegue en máquinas virtuales y gestión de servicios en la nube. Implementación de copias de seguridad, recuperación de datos y administración de entornos con Docker, Raspberry Pi, Synology, y servidores Janus WebRTC.",
+      "Diseño y desarrollo de integraciones entre sistemas MES y ERP utilizando Laravel, React y APIs REST. Gestión integral de infraestructura: administración de servidores Linux/Windows Server, virtualización con VMware vSphere/vCenter, configuración de redes (VLANs, pfSense), sistemas RAID y alta disponibilidad. Implementación de soluciones de backup automatizadas con Synology NAS, despliegues con Docker y CI/CD. Desarrollo de aplicaciones IoT con Raspberry Pi y servidores de comunicación en tiempo real con Janus WebRTC.",
     link: "",
   },
   {
-    date: "Febrero 2022",
-    title: "Desarrollador FullStack",
+    i18nKey: "exp2",
+    date: "Febrero 2022 - Febrero 2023",
+    title: "Full Stack Developer (MERN Stack)",
     company: "Rolling Code - Argentina",
     description:
-      "Prácticas en el desarrollo MERN. Capacitación en la creacion de aplicaciones web modernas y escalables. Trabajé en proyectos emocionantes donde desarrollé habilidades en la creación de APIs RESTful con Express.js, el diseño de interfaces de usuario dinámicas con React.js, y la implementación de bases de datos NoSQL con MongoDB. Estas prácticas me proporcionaron una sólida comprensión de las tecnologías más populares en el desarrollo web moderno y la capacidad para construir aplicaciones web de alta calidad.",
+      "Desarrollo de aplicaciones web full stack utilizando MongoDB, Express.js, React.js y Node.js (MERN). Diseño e implementación de APIs RESTful con autenticación JWT y manejo de sesiones. Creación de interfaces de usuario responsive con React.js y gestión de estado. Integración con bases de datos NoSQL y optimización de consultas. Trabajo colaborativo con metodologías ágiles (Scrum) y control de versiones con Git.",
   },
 ]
 ---
 
 <ol class="relative mt-16">
   {
-    EXPERIENCIE.map((experiencie) => (
+    EXPERIENCE.map((experience) => (
       <li class="">
-        <ExperienceItem {...experiencie} />
+        <ExperienceItem {...experience} />
       </li>
     ))
   }

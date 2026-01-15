@@ -1,4 +1,6 @@
 ---
+import ProjectCard from './ProjectCard.astro'
+import ProjectModal from './ProjectModal.astro'
 import InertiaIcon from '../components/icons/Inertia.astro'
 import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro"
@@ -15,6 +17,8 @@ import MySQLIcon from "./icons/MySQL.astro"
 import TailwindIcon from "./icons/Tailwind.astro"
 import SocketIo from "./icons/SocketIo.astro"
 import JanusWebRTC from "./icons/WebRTC.astro"
+import SupabaseIcon from "./icons/Supabase.astro"
+import ClaudeIcon from "./icons/Claude.astro"
 
 const TAGS = {
   INERTIA: {
@@ -81,22 +85,105 @@ const TAGS = {
     name: 'WebRTC',
     class: 'bg-[#38BDF8] tex-white',
     icon: JanusWebRTC
+  },
+  SUPABASE: {
+    name: 'Supabase',
+    class: 'bg-[#3ECF8E] text-white',
+    icon: SupabaseIcon
+  },
+  CLAUDECODE: {
+    name: 'Claude Code',
+    class: 'bg-[#CC9B7A] text-white',
+    icon: ClaudeIcon
   }
 }
 const PROJECTS = [
     {
+      i18nKey: 'tvtracker',
+      title: 'TV Tracker Series',
+      description: 'SPA creada con Astro, Supabase y API TMDB que permite a los usuarios buscar películas y series de TV, realizar un seguimiento del progreso de visualización, administrar listas personales (en observación, planificadas, completadas) y conservar datos en todas las sesiones con autenticación y soporte para modo invitado.',
+      features: [
+        'Búsqueda en tiempo real con integración de API TMDB',
+        'Autenticación segura con Supabase y soporte para modo invitado',
+        'Seguimiento detallado de progreso por episodio y temporada',
+        'Listas personalizables (En observación, Planificadas, Completadas)',
+        'Sincronización de datos entre dispositivos y sesiones'
+      ],
+      testInfo: {
+        instructions: 'Puedes usar el modo invitado para probar sin registro, pero te recomiendo registrarte con tu email para guardar tu progreso en la base de datos y sincronizar entre dispositivos. Solo necesitas confirmar tu cuenta por email.',
+        credentials: []
+      },
+      link: 'https://tv-tracker-series.vercel.app',
+      image: '/projects/tv-tracker-min.png',
+      github: 'https://github.com/nicoelias997/tv-tracker-series',
+      tags: [TAGS.ASTRO, TAGS.SUPABASE, TAGS.CLAUDECODE]
+    },
+    {
+      i18nKey: 'homefoods',
+      title: 'Home Foods',
+      description: 'Sistema de gestión para restaurantes desarrollado con Laravel e Inertia.js que permite administrar menús, pedidos y usuarios con un panel administrativo completo.',
+      features: [
+        'Gestión completa de menú y categorías de productos',
+        'Sistema de pedidos con seguimiento en tiempo real',
+        'Panel administrativo para gestión de inventario',
+        'Reportes de ventas y estadísticas detalladas',
+        'Registro de usuarios y autenticación'
+      ],
+      testInfo: {
+        instructionsKey: 'project.homefoods.instructions',
+        instructions: 'Puedes usar las credenciales de prueba o registrarte con una cuenta nueva.',
+        credentials: [
+          { roleKey: 'role.testUser', role: 'Usuario de prueba', email: 'test@test.com', password: '12345678' }
+        ]
+      },
+      link: 'https://homefoods.up.railway.app',
+      image: '/projects/HomeFoods-min.png',
+      github: 'https://github.com/nicoelias997/home_foods',
+      tags: [TAGS.INERTIA, TAGS.PHP, TAGS.LARAVEL, TAGS.MYSQL]
+    },
+    {
+    i18nKey: 'meet',
     title: 'Meet Strangers',
     description: 'Aplicación de videollamadas desarrollada con JavaScript puro y WebRTC, que permite establecer conexión entre dos usuarios mediante un código personal o de forma aleatoria, similar a plataformas como Omegle. El proyecto demuestra cómo implementar comunicación en tiempo real desde cero.',
-    link: 'https://janus-meet.onrender.com',
-    image: '/projects/meet.PNG',
+    features: [
+      'Conexión P2P mediante WebRTC sin servidor intermedio',
+      'Salas privadas con código personal único',
+      'Modo aleatorio tipo Omegle para conocer personas',
+      'Chat de texto integrado durante la videollamada',
+      'Controles de audio y video en tiempo real'
+    ],
+    testInfo: {
+      instructions: 'Acepta los permisos de cámara y micrófono cuando el navegador lo solicite. Para conectar con otra persona: activa el modo "Stranger" para encuentros aleatorios, o comparte tu ID personal con alguien para una sala privada.',
+      credentials: []
+    },
+    link: 'https://janus-meet-production.up.railway.app',
+    image: '/projects/meet-min.png',
     github: 'https://github.com/nicoelias997/janus-meet',
     tags: [TAGS.JAVASCRIPT, TAGS.SOCKETIO, TAGS.WEBRTC, TAGS.MONGODB]
   },
   {
+    i18nKey: 'cms',
     title: 'Content Management System',
     description: 'Es una plataforma de software diseñada para gestionar y colaborar en la revisión, aceptación o rechazo de documentación, así como para el envío de notas y comentarios entre administradores y otros usuarios del sistema.',
-    link: 'https://cms.lemecsl.com/',
-    image: '/projects/Captura-Spa.jpg',
+    features: [
+      'Sistema de roles y permisos granular por usuario',
+      'Flujo de aprobación de documentos con múltiples revisores',
+      'Comentarios y notas colaborativas en tiempo real',
+      'Historial completo de revisiones y cambios',
+      'Notificaciones automáticas por email y en la plataforma'
+    ],
+    testInfo: {
+      instructions: 'El sistema tiene múltiples roles. El administrador puede aprobar usuarios y gestionar todo el sistema. Los propietarios (owners) gestionan su proveedor. Los usuarios regulares necesitan aprobación del admin para acceder.',
+      credentials: [
+        { roleKey: 'role.admin', role: 'Administrador', email: 'admin@example.com', password: 'password' },
+        { roleKey: 'role.owner1', role: 'Propietario 1', email: 'owner1@example.com', password: 'password' },
+        { roleKey: 'role.user1', role: 'Usuario 1', email: 'user1@example.com', password: 'password' },
+        { roleKey: 'role.owner2', role: 'Propietario 2', email: 'owner2@example.com', password: 'password' },
+        { roleKey: 'role.user2', role: 'Usuario 2', email: 'user2@example.com', password: 'password' }
+      ]
+    },
+    link: 'https://access-control-spa.up.railway.app',
+    image: '/projects/DocuControl-min.png',
     github: '',
     tags: [TAGS.INERTIA, TAGS.PHP, TAGS.LARAVEL, TAGS.MYSQL]
   },
@@ -108,74 +195,68 @@ const PROJECTS = [
   //   github: 'https://github.com/nicoelias997/portfolio-dev',
   //   tags: [TAGS.ASTRO, TAGS.TAILWIND]
   // },
-  {
-    title: 'Banner MyVirtualCard',
-    description: 'Funcionalidad del banner dinamico de la Virtual Card, gestiona la instalación de la misma.',
-    link: 'https://pruebas.myvirtualcard.es',
-    image: '/projects/banner.jpg',
-    github: '',
-    tags: [TAGS.ANGULAR, TAGS.TYPESCRIPT]
-  },
-  {
-    title: 'Hamburgueseria Leno',
-    description: 'Proyecto final de capacitación, debiamos realizar un trabajo en equipo de un E-Commerce. Me toco realizar el Front-End y Back-End del login.',
-    link: 'https://lenohamburguesas.netlify.app/login',
-    image: '/projects/leno.jpg',
-    github: 'https://github.com/nicoelias997/LenoBackEnd',
-    tags: [TAGS.REACT, TAGS.JAVASCRIPT, TAGS.MONGODB]
-  }
+  // {
+  //   title: 'Banner MyVirtualCard',
+  //   description: 'Funcionalidad del banner dinamico de la Virtual Card, gestiona la instalación de la misma.',
+  //   link: 'https://pruebas.myvirtualcard.es',
+  //   image: '/projects/banner.jpg',
+  //   github: '',
+  //   tags: [TAGS.ANGULAR, TAGS.TYPESCRIPT]
+  // },
+  // {
+  //   title: 'Hamburgueseria Leno',
+  //   description: 'Proyecto final de capacitación, debiamos realizar un trabajo en equipo de un E-Commerce. Me toco realizar el Front-End y Back-End del login.',
+  //   link: 'https://lenohamburguesas.netlify.app/login',
+  //   image: '/projects/leno.jpg',
+  //   github: 'https://github.com/nicoelias997/LenoBackEnd',
+  //   tags: [TAGS.REACT, TAGS.JAVASCRIPT, TAGS.MONGODB]
+  // }
 ]
 
 ---
-<div class="flex flex-col gap-y-16">
+<div class="flex flex-col gap-y-8 md:gap-y-12">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
-    </div>
-  </div>
-
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
-          {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                <tag.icon class="size-4" />
-                {tag.name}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-      <div class="mt-2 text-gray-700 dark:text-gray-400">
-        {description}
-      </div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
-          {github && (
-            <LinkButton href={github}>
-              <GitHub class="size-6" />
-              Code
-              
-            </LinkButton>
-          )}
-          {link && (
-            <LinkButton href={link}>
-              <Link class="size-4" />
-              Preview
-            </LinkButton>
-          )}
-        </footer>
-    </div>
-  </div>
-</article>
+    PROJECTS.map((project, index) => (
+      <ProjectCard
+        title={project.title}
+        tags={project.tags}
+        index={index}
+      />
     ))
   }
 </div>
+
+<!-- Add modal component -->
+<ProjectModal />
+
+<script is:inline define:vars={{ PROJECTS }}>
+  // Set projects data for modal
+  if (typeof window !== 'undefined') {
+    window.setProjectsData(PROJECTS)
+
+    // Wait for DOM to be ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add click handlers to all project cards
+      document.querySelectorAll('.project-card').forEach((card) => {
+        function handleOpenModal() {
+          const projectIndex = parseInt(card.dataset.projectIndex, 10)
+          const event = new CustomEvent('open-project-modal', {
+            detail: { projectIndex }
+          })
+          document.dispatchEvent(event)
+        }
+
+        // Click handler
+        card.addEventListener('click', handleOpenModal)
+
+        // Keyboard handler (Enter or Space)
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            handleOpenModal()
+          }
+        })
+      })
+    })
+  }
+</script>

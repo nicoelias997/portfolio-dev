@@ -1,0 +1,314 @@
+---
+---
+
+<div class="relative ml-2">
+  <button
+    id="language-toggle"
+    class="flex items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500"
+    aria-label="Cambiar idioma"
+    title="Cambiar idioma / Change language"
+  >
+    <!-- Spanish flag (default) -->
+    <span id="flag-es" class="flag-icon">
+      <svg class="size-5 rounded-sm" viewBox="0 0 640 480">
+        <path fill="#c60b1e" d="M0 0h640v480H0z"/>
+        <path fill="#ffc400" d="M0 120h640v240H0z"/>
+      </svg>
+    </span>
+    <!-- English flag -->
+    <span id="flag-en" class="flag-icon hidden">
+      <svg class="size-5 rounded-sm" viewBox="0 0 640 480">
+        <path fill="#012169" d="M0 0h640v480H0z"/>
+        <path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0h75z"/>
+        <path fill="#C8102E" d="m424 281 216 159v40L369 281h55zm-184 20 6 35L54 480H0l240-179zM640 0v3L391 191l2-44L590 0h50zM0 0l239 176h-60L0 42V0z"/>
+        <path fill="#FFF" d="M241 0v480h160V0H241zM0 160v160h640V160H0z"/>
+        <path fill="#C8102E" d="M0 193v96h640v-96H0zM273 0v480h96V0h-96z"/>
+      </svg>
+    </span>
+  </button>
+</div>
+
+<script is:inline>
+  const translations = {
+    es: {
+      // Navigation
+      'nav.experience': 'Experiencia',
+      'nav.projects': 'Proyectos',
+      'nav.about': 'Sobre mí',
+      'nav.contact': 'Contacto',
+
+      // Hero
+      'hero.badge': 'Disponible para trabajar',
+      'hero.greeting': 'Hey, soy Nico',
+      'hero.description': '+4 años de experiencia. <strong>Desarrollador Full Stack e Ingeniero de Infraestructura.</strong> Argentino residiendo en Valencia, España. Especializado en desarrollo de aplicaciones web a medida, administración de servidores, virtualización (VMware, vCenter), configuración de redes, ensamblaje de equipos, RAID arrays, pfSense, copias de seguridad y réplicas en la nube.',
+      'hero.contact': 'Contáctame',
+
+      // Section titles
+      'section.experience': 'Experiencia laboral',
+      'section.projects': 'Proyectos',
+      'section.about': 'Sobre mí',
+
+      // Projects
+      'projects.clickMore': 'Haz clic para ver más',
+
+      // Modal
+      'modal.info': 'Información',
+      'modal.test': 'Cómo probar',
+      'modal.features': 'Características principales:',
+      'modal.instructions': 'Instrucciones',
+      'modal.credentials': 'Credenciales de prueba',
+      'modal.noCredentials': 'Este proyecto no requiere credenciales. Sigue las instrucciones para probarlo.',
+      'modal.tryNow': 'Probar ahora',
+      'modal.role': 'Rol',
+      'modal.email': 'Email',
+      'modal.password': 'Contraseña',
+      'modal.copy': 'Copiar',
+      'modal.copied': 'Copiado',
+      'modal.viewDemo': 'Ver Demo',
+
+      // Project titles and descriptions
+      'project.tvtracker.title': 'TV Tracker Series',
+      'project.tvtracker.description': 'SPA creada con Astro, Supabase y API TMDB que permite a los usuarios buscar películas y series de TV, realizar un seguimiento del progreso de visualización, administrar listas personales (en observación, planificadas, completadas) y conservar datos en todas las sesiones con autenticación y soporte para modo invitado.',
+      'project.tvtracker.instructions': 'Puedes usar el modo invitado para probar sin registro, pero te recomiendo registrarte con tu email para guardar tu progreso en la base de datos y sincronizar entre dispositivos. Solo necesitas confirmar tu cuenta por email.',
+
+      'project.homefoods.title': 'Home Foods',
+      'project.homefoods.description': 'Sistema de gestión para restaurantes desarrollado con Laravel e Inertia.js que permite administrar menús, pedidos y usuarios con un panel administrativo completo.',
+      'project.homefoods.instructions': 'Puedes usar las credenciales de prueba o registrarte con una cuenta nueva.',
+
+      'project.meet.title': 'Meet Strangers',
+      'project.meet.description': 'Aplicación de videollamadas desarrollada con JavaScript puro y WebRTC, que permite establecer conexión entre dos usuarios mediante un código personal o de forma aleatoria, similar a plataformas como Omegle. El proyecto demuestra cómo implementar comunicación en tiempo real desde cero.',
+      'project.meet.instructions': 'Acepta los permisos de cámara y micrófono cuando el navegador lo solicite. Para conectar con otra persona: activa el modo "Stranger" para encuentros aleatorios, o comparte tu ID personal con alguien para una sala privada.',
+
+      'project.cms.title': 'Content Management System',
+      'project.cms.description': 'Es una plataforma de software diseñada para gestionar y colaborar en la revisión, aceptación o rechazo de documentación, así como para el envío de notas y comentarios entre administradores y otros usuarios del sistema.',
+      'project.cms.instructions': 'El sistema tiene múltiples roles. El administrador puede aprobar usuarios y gestionar todo el sistema. Los propietarios (owners) gestionan su proveedor. Los usuarios regulares necesitan aprobación del admin para acceder.',
+
+      // Features (TV Tracker)
+      'feature.tvtracker.1': 'Búsqueda en tiempo real con integración de API TMDB',
+      'feature.tvtracker.2': 'Autenticación segura con Supabase y soporte para modo invitado',
+      'feature.tvtracker.3': 'Seguimiento detallado de progreso por episodio y temporada',
+      'feature.tvtracker.4': 'Listas personalizables (En observación, Planificadas, Completadas)',
+      'feature.tvtracker.5': 'Sincronización de datos entre dispositivos y sesiones',
+
+      // Features (Home Foods)
+      'feature.homefoods.1': 'Gestión completa de menú y categorías de productos',
+      'feature.homefoods.2': 'Sistema de pedidos con seguimiento en tiempo real',
+      'feature.homefoods.3': 'Panel administrativo para gestión de inventario',
+      'feature.homefoods.4': 'Reportes de ventas y estadísticas detalladas',
+      'feature.homefoods.5': 'Registro de usuarios y autenticación',
+
+      // Features (Meet Strangers)
+      'feature.meet.1': 'Conexión P2P mediante WebRTC sin servidor intermedio',
+      'feature.meet.2': 'Salas privadas con código personal único',
+      'feature.meet.3': 'Modo aleatorio tipo Omegle para conocer personas',
+      'feature.meet.4': 'Chat de texto integrado durante la videollamada',
+      'feature.meet.5': 'Controles de audio y video en tiempo real',
+
+      // Features (CMS)
+      'feature.cms.1': 'Sistema de roles y permisos granular por usuario',
+      'feature.cms.2': 'Flujo de aprobación de documentos con múltiples revisores',
+      'feature.cms.3': 'Comentarios y notas colaborativas en tiempo real',
+      'feature.cms.4': 'Historial completo de revisiones y cambios',
+      'feature.cms.5': 'Notificaciones automáticas por email y en la plataforma',
+
+      // Credential roles
+      'role.admin': 'Administrador',
+      'role.owner1': 'Propietario 1',
+      'role.user1': 'Usuario 1',
+      'role.owner2': 'Propietario 2',
+      'role.user2': 'Usuario 2',
+      'role.testUser': 'Usuario de prueba',
+
+      // Footer
+      'footer.rights': 'Casi todos los derechos reservados',
+      'footer.about': 'Sobre mí',
+      'footer.contact': 'Contacto',
+
+      // About me
+      'about.p1': 'Me llamo Nicolás Elias. Con más de 4 años de experiencia, actualmente trabajo como <strong>Full Stack Developer e Infrastructure Engineer</strong>, desarrollando integraciones entre sistemas MES y ERP. <strong>He diseñado y desplegado aplicaciones completas en producción</strong>, gestionando todo el ciclo de vida: desde el desarrollo hasta la infraestructura de servidores, incluyendo configuraciones de seguridad, alta disponibilidad y sistemas RAID.',
+      'about.p2': 'Mi stack técnico incluye <strong>Laravel, React, Astro, Node.js y bases de datos SQL/NoSQL</strong>. En infraestructura, domino <strong>VMware vSphere/vCenter, Docker, configuración de redes (VLANs, pfSense), administración Linux/Windows Server</strong>, y soluciones de backup con Synology NAS. También tengo experiencia con <strong>WebRTC (Janus), IoT con Raspberry Pi, y despliegues en cloud (Railway, Vercel, VPS)</strong>.',
+      'about.p3': 'Soy una persona proactiva, orientada a resultados y con excelentes habilidades de comunicación. Disfruto trabajando en equipo y resolviendo problemas complejos. Fuera del trabajo, me apasiona viajar, conocer nuevas culturas y, como buen argentino <strong>campeón del mundo</strong>, jugar al fútbol.',
+
+      // Experience
+      'experience.learnMore': 'Saber más',
+      'experience.exp1.title': 'Full Stack Developer & Infrastructure Engineer',
+      'experience.exp1.company': 'Comunicaciones Man Levante SL - España',
+      'experience.exp1.date': 'Marzo 2023 - Presente',
+      'experience.exp1.description': 'Diseño y desarrollo de integraciones entre sistemas MES y ERP utilizando Laravel, React y APIs REST. Gestión integral de infraestructura: administración de servidores Linux/Windows Server, virtualización con VMware vSphere/vCenter, configuración de redes (VLANs, pfSense), sistemas RAID y alta disponibilidad. Implementación de soluciones de backup automatizadas con Synology NAS, despliegues con Docker y CI/CD. Desarrollo de aplicaciones IoT con Raspberry Pi y servidores de comunicación en tiempo real con Janus WebRTC.',
+      'experience.exp2.title': 'Full Stack Developer (MERN Stack)',
+      'experience.exp2.company': 'Rolling Code - Argentina',
+      'experience.exp2.date': 'Febrero 2022 - Febrero 2023',
+      'experience.exp2.description': 'Desarrollo de aplicaciones web full stack utilizando MongoDB, Express.js, React.js y Node.js (MERN). Diseño e implementación de APIs RESTful con autenticación JWT y manejo de sesiones. Creación de interfaces de usuario responsive con React.js y gestión de estado. Integración con bases de datos NoSQL y optimización de consultas. Trabajo colaborativo con metodologías ágiles (Scrum) y control de versiones con Git.',
+    },
+    en: {
+      // Navigation
+      'nav.experience': 'Experience',
+      'nav.projects': 'Projects',
+      'nav.about': 'About me',
+      'nav.contact': 'Contact',
+
+      // Hero
+      'hero.badge': 'Available for work',
+      'hero.greeting': 'Hey, I\'m Nico',
+      'hero.description': '+4 years of experience. <strong>Full Stack Developer & Infrastructure Engineer.</strong> Argentinian living in Valencia, Spain. Specialized in custom web application development, server administration, virtualization (VMware, vCenter), network configuration, hardware assembly, RAID arrays, pfSense, backups and cloud replicas.',
+      'hero.contact': 'Contact me',
+
+      // Section titles
+      'section.experience': 'Work Experience',
+      'section.projects': 'Projects',
+      'section.about': 'About me',
+
+      // Projects
+      'projects.clickMore': 'Click to see more',
+
+      // Modal
+      'modal.info': 'Information',
+      'modal.test': 'How to test',
+      'modal.features': 'Key features:',
+      'modal.instructions': 'Instructions',
+      'modal.credentials': 'Test credentials',
+      'modal.noCredentials': 'This project doesn\'t require credentials. Follow the instructions to test it.',
+      'modal.tryNow': 'Try now',
+      'modal.role': 'Role',
+      'modal.email': 'Email',
+      'modal.password': 'Password',
+      'modal.copy': 'Copy',
+      'modal.copied': 'Copied',
+      'modal.viewDemo': 'View Demo',
+
+      // Project titles and descriptions
+      'project.tvtracker.title': 'TV Tracker Series',
+      'project.tvtracker.description': 'SPA built with Astro, Supabase and TMDB API that allows users to search for movies and TV series, track viewing progress, manage personal lists (watching, planned, completed) and persist data across sessions with authentication and guest mode support.',
+      'project.tvtracker.instructions': 'You can use guest mode to try without registration, but I recommend signing up with your email to save your progress in the database and sync across devices. You just need to confirm your account by email.',
+
+      'project.homefoods.title': 'Home Foods',
+      'project.homefoods.description': 'Restaurant management system built with Laravel and Inertia.js that allows managing menus, orders and users with a complete admin panel.',
+      'project.homefoods.instructions': 'You can use the test credentials or register a new account.',
+
+      'project.meet.title': 'Meet Strangers',
+      'project.meet.description': 'Video calling application built with vanilla JavaScript and WebRTC, allowing connection between two users via personal code or randomly, similar to platforms like Omegle. The project demonstrates how to implement real-time communication from scratch.',
+      'project.meet.instructions': 'Accept camera and microphone permissions when prompted by the browser. To connect with someone: enable "Stranger" mode for random encounters, or share your personal ID with someone for a private room.',
+
+      'project.cms.title': 'Content Management System',
+      'project.cms.description': 'A software platform designed to manage and collaborate on document review, acceptance or rejection, as well as sending notes and comments between administrators and other system users.',
+      'project.cms.instructions': 'The system has multiple roles. The administrator can approve users and manage the entire system. Owners manage their provider. Regular users need admin approval to access.',
+
+      // Features (TV Tracker)
+      'feature.tvtracker.1': 'Real-time search with TMDB API integration',
+      'feature.tvtracker.2': 'Secure authentication with Supabase and guest mode support',
+      'feature.tvtracker.3': 'Detailed episode and season progress tracking',
+      'feature.tvtracker.4': 'Customizable lists (Watching, Planned, Completed)',
+      'feature.tvtracker.5': 'Data sync across devices and sessions',
+
+      // Features (Home Foods)
+      'feature.homefoods.1': 'Complete menu and product category management',
+      'feature.homefoods.2': 'Order system with real-time tracking',
+      'feature.homefoods.3': 'Admin panel for inventory management',
+      'feature.homefoods.4': 'Detailed sales reports and statistics',
+      'feature.homefoods.5': 'User registration and authentication',
+
+      // Features (Meet Strangers)
+      'feature.meet.1': 'P2P connection via WebRTC without intermediate server',
+      'feature.meet.2': 'Private rooms with unique personal code',
+      'feature.meet.3': 'Omegle-style random mode to meet people',
+      'feature.meet.4': 'Integrated text chat during video call',
+      'feature.meet.5': 'Real-time audio and video controls',
+
+      // Features (CMS)
+      'feature.cms.1': 'Granular role and permission system per user',
+      'feature.cms.2': 'Document approval workflow with multiple reviewers',
+      'feature.cms.3': 'Real-time collaborative comments and notes',
+      'feature.cms.4': 'Complete revision and change history',
+      'feature.cms.5': 'Automatic email and platform notifications',
+
+      // Credential roles
+      'role.admin': 'Administrator',
+      'role.owner1': 'Owner 1',
+      'role.user1': 'User 1',
+      'role.owner2': 'Owner 2',
+      'role.user2': 'User 2',
+      'role.testUser': 'Test user',
+
+      // Footer
+      'footer.rights': 'Almost all rights reserved',
+      'footer.about': 'About me',
+      'footer.contact': 'Contact',
+
+      // About me
+      'about.p1': 'My name is Nicolás Elias. With over 4 years of experience, I currently work as a <strong>Full Stack Developer & Infrastructure Engineer</strong>, developing integrations between MES and ERP systems. <strong>I have designed and deployed complete production applications</strong>, managing the entire lifecycle: from development to server infrastructure, including security configurations, high availability, and RAID systems.',
+      'about.p2': 'My tech stack includes <strong>Laravel, React, Astro, Node.js, and SQL/NoSQL databases</strong>. In infrastructure, I master <strong>VMware vSphere/vCenter, Docker, network configuration (VLANs, pfSense), Linux/Windows Server administration</strong>, and backup solutions with Synology NAS. I also have experience with <strong>WebRTC (Janus), IoT with Raspberry Pi, and cloud deployments (Railway, Vercel, VPS)</strong>.',
+      'about.p3': 'I am a proactive, results-oriented person with excellent communication skills. I enjoy working in teams and solving complex problems. Outside of work, I am passionate about traveling, learning about new cultures, and as a proud Argentinian <strong>world champion</strong>, playing football.',
+
+      // Experience
+      'experience.learnMore': 'Learn more',
+      'experience.exp1.title': 'Full Stack Developer & Infrastructure Engineer',
+      'experience.exp1.company': 'Comunicaciones Man Levante SL - Spain',
+      'experience.exp1.date': 'March 2023 - Present',
+      'experience.exp1.description': 'Design and development of integrations between MES and ERP systems using Laravel, React, and REST APIs. Comprehensive infrastructure management: Linux/Windows Server administration, virtualization with VMware vSphere/vCenter, network configuration (VLANs, pfSense), RAID systems, and high availability. Implementation of automated backup solutions with Synology NAS, Docker deployments and CI/CD. Development of IoT applications with Raspberry Pi and real-time communication servers with Janus WebRTC.',
+      'experience.exp2.title': 'Full Stack Developer (MERN Stack)',
+      'experience.exp2.company': 'Rolling Code - Argentina',
+      'experience.exp2.date': 'February 2022 - February 2023',
+      'experience.exp2.description': 'Full stack web application development using MongoDB, Express.js, React.js, and Node.js (MERN). Design and implementation of RESTful APIs with JWT authentication and session management. Creation of responsive user interfaces with React.js and state management. Integration with NoSQL databases and query optimization. Collaborative work with agile methodologies (Scrum) and version control with Git.',
+    }
+  }
+
+  // Get saved language or default to Spanish
+  let currentLang = localStorage.getItem('portfolio-lang') || 'es'
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    applyLanguage(currentLang)
+    updateFlagIcon(currentLang)
+  })
+
+  // Toggle button click
+  const langToggle = document.getElementById('language-toggle')
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      currentLang = currentLang === 'es' ? 'en' : 'es'
+      localStorage.setItem('portfolio-lang', currentLang)
+      applyLanguage(currentLang)
+      updateFlagIcon(currentLang)
+    })
+  }
+
+  function updateFlagIcon(lang) {
+    const flagEs = document.getElementById('flag-es')
+    const flagEn = document.getElementById('flag-en')
+    if (flagEs && flagEn) {
+      if (lang === 'es') {
+        flagEs.classList.remove('hidden')
+        flagEn.classList.add('hidden')
+      } else {
+        flagEs.classList.add('hidden')
+        flagEn.classList.remove('hidden')
+      }
+    }
+  }
+
+  function applyLanguage(lang) {
+    const t = translations[lang]
+
+    // Update all elements with data-i18n attribute
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n')
+      if (t[key]) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = t[key]
+        } else if (key.includes('description') || key === 'hero.description' || key.startsWith('about.')) {
+          el.innerHTML = t[key]
+        } else {
+          el.textContent = t[key]
+        }
+      }
+    })
+
+    // Update document language
+    document.documentElement.lang = lang
+  }
+
+  // Export for use in other components
+  window.translations = translations
+  window.getCurrentLang = () => currentLang
+  window.applyLanguage = applyLanguage
+</script>
