@@ -2,9 +2,6 @@
 import ProjectCard from './ProjectCard.astro'
 import ProjectModal from './ProjectModal.astro'
 import InertiaIcon from '../components/icons/Inertia.astro'
-import Link from "./icons/Link.astro"
-import LinkButton from "./LinkButton.astro"
-import GitHub from "./icons/GitHub.astro"
 import PhpIcon from "./icons/Php.astro"
 import LaravelIcon from "./icons/Laravel.astro"
 import AngularIcon from "./icons/Angular.astro"
@@ -19,6 +16,7 @@ import SocketIo from "./icons/SocketIo.astro"
 import JanusWebRTC from "./icons/WebRTC.astro"
 import SupabaseIcon from "./icons/Supabase.astro"
 import ClaudeIcon from "./icons/Claude.astro"
+import VueIcon from "./icons/Vue.astro"
 
 const TAGS = {
   INERTIA: {
@@ -95,6 +93,11 @@ const TAGS = {
     name: 'Claude Code',
     class: 'bg-[#CC9B7A] text-white',
     icon: ClaudeIcon
+  },
+  VUE: {
+    name: 'Vue.js',
+    class: 'bg-[#41B883] text-white',
+    icon: VueIcon
   }
 }
 const PROJECTS = [
@@ -121,13 +124,13 @@ const PROJECTS = [
     {
       i18nKey: 'homefoods',
       title: 'Home Foods',
-      description: 'Sistema de gestión para restaurantes desarrollado con Laravel e Inertia.js que permite administrar menús, pedidos y usuarios con un panel administrativo completo.',
+      description: 'Sistema Full-Stack de gestión de recetas caseras desarrollado con Laravel, Vue.js e Inertia.js. Incluye procesamiento y optimización de imágenes, modelo de datos relacional avanzado con MySQL y Eloquent, control de acceso por autor y interfaces dinámicas con persistencia local.',
       features: [
-        'Gestión completa de menú y categorías de productos',
-        'Sistema de pedidos con seguimiento en tiempo real',
-        'Panel administrativo para gestión de inventario',
-        'Reportes de ventas y estadísticas detalladas',
-        'Registro de usuarios y autenticación'
+        'Sistema Full-Stack completo de gestión de recetas caseras',
+        'Procesamiento y optimización de imágenes',
+        'Modelo de datos relacional avanzado con MySQL y Eloquent',
+        'Control de acceso por autor: solo el creador puede modificar o eliminar sus recetas',
+        'Interfaces dinámicas con persistencia local'
       ],
       testInfo: {
         instructionsKey: 'project.homefoods.instructions',
@@ -139,7 +142,7 @@ const PROJECTS = [
       link: 'https://homefoods.up.railway.app',
       image: '/projects/HomeFoods-min.png',
       github: 'https://github.com/nicoelias997/home_foods',
-      tags: [TAGS.INERTIA, TAGS.PHP, TAGS.LARAVEL, TAGS.MYSQL]
+      tags: [TAGS.INERTIA, TAGS.VUE, TAGS.PHP, TAGS.LARAVEL, TAGS.MYSQL]
     },
     {
     i18nKey: 'meet',
@@ -175,17 +178,19 @@ const PROJECTS = [
     testInfo: {
       instructions: 'El sistema tiene múltiples roles. El administrador puede aprobar usuarios y gestionar todo el sistema. Los propietarios (owners) gestionan su proveedor. Los usuarios regulares necesitan aprobación del admin para acceder.',
       credentials: [
-        { roleKey: 'role.admin', role: 'Administrador', email: 'admin@example.com', password: 'password' },
-        { roleKey: 'role.owner1', role: 'Propietario 1', email: 'owner1@example.com', password: 'password' },
-        { roleKey: 'role.user1', role: 'Usuario 1', email: 'user1@example.com', password: 'password' },
-        { roleKey: 'role.owner2', role: 'Propietario 2', email: 'owner2@example.com', password: 'password' },
-        { roleKey: 'role.user2', role: 'Usuario 2', email: 'user2@example.com', password: 'password' }
+        { roleKey: 'role.admin', role: 'Administrador', dni: '01010101A', password: 'password' },
+        { roleKey: 'role.owner1', role: 'Propietario 1', dni: '01010102A', password: 'password' },
+        { roleKey: 'role.user1', role: 'Usuario 1', dni: '01010103A', password: 'password' },
+        { roleKey: 'role.owner2', role: 'Propietario 2', dni: '01010104A', password: 'password' },
+        { roleKey: 'role.user2', role: 'Usuario 2', dni: '01010105A', password: 'password' },
+        { roleKey: 'role.owner3', role: 'Propietario 3', dni: '01010106A', password: 'password' },
+        { roleKey: 'role.user3', role: 'Usuario 3', dni: '01010107A', password: 'password' },
       ]
     },
     link: 'https://access-control-spa.up.railway.app',
     image: '/projects/DocuControl-min.png',
     github: '',
-    tags: [TAGS.INERTIA, TAGS.PHP, TAGS.LARAVEL, TAGS.MYSQL]
+    tags: [TAGS.INERTIA, TAGS.VUE, TAGS.PHP, TAGS.LARAVEL, TAGS.MYSQL]
   },
   // {
   //   title: 'Portfolio',
